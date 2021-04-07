@@ -1,3 +1,5 @@
+import time
+
 # Creating a class called Block with attributes mass and velocity.
 class Block:
     def __init__(self, mass, velocity):
@@ -30,6 +32,7 @@ running = True
 collision_count = 0
 
 if __name__ == '__main__':
+    start = time.time()
     while running:
         # Stops the simulation when B2 and B1 are moving away from the wall and B1 has a higher speed than B2.
         if B1.velocity > B2.velocity >= 0:
@@ -50,4 +53,6 @@ if __name__ == '__main__':
                 # Incrementing the collision count after every block-wall collision.
                 collision_count += 1
 
-    print(collision_count)
+    print("π =", (collision_count / (10 ** (n-1))))
+    stop = time.time()
+    print("It took", round(stop - start, 3), "seconds to compute", n, "digits of pi")
